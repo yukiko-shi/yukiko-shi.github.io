@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>石子彧 · 个人简介</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&family=Noto+Serif+SC:wght@500;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F4EFE6;
+    --paper-2:#EBE3D4;
+    --ink:#1C1B17;
+    --ink-soft:#5A5448;
+    --moss:#3B5641;
+    --moss-deep:#26382D;
+    --brass:#B0822F;
+    --brass-soft:#C9A24B;
+    --line:#D8CEBC;
+
+    --font-display:'Fraunces','Noto Serif SC',serif;
+    --font-body:'Archivo','Noto Sans SC',sans-serif;
+    --font-mono:'Space Mono','Noto Sans SC',monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- 顶部细信息条 ---------- */
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:22px 0 0;
+  }
+  .topbar .dot{color:var(--brass);}
+
+  /* ---------- 封面 ---------- */
+  .hero{
+    padding:64px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--moss);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:clamp(48px,9vw,104px);
+    line-height:0.96;
+    letter-spacing:-0.01em;
+    margin-bottom:8px;
+  }
+  .hero h1 .accent{
+    font-style:italic;
+    color:var(--moss);
+  }
+  .hero .role{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(20px,3vw,28px);
+    color:var(--ink-soft);
+    margin-bottom:34px;
+  }
+  .hero .intro{
+    max-width:540px;
+    font-size:16.5px;
+    color:var(--ink-soft);
+  }
+  .hero .intro a{
+    color:var(--moss);
+    text-decoration:none;
+    border-bottom:1px solid var(--brass);
+    padding-bottom:1px;
+    transition:color .2s,border-color .2s;
+  }
+  .hero .intro a:hover{color:var(--brass);border-color:var(--moss);}
+
+  /* ---------- 封面两栏 + 照片 ---------- */
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:56px;
+    align-items:center;
+  }
+  .portrait{
+    position:relative;
+    flex-shrink:0;
+    justify-self:end;
+  }
+  .portrait img{
+    display:block;
+    width:clamp(180px,24vw,236px);
+    aspect-ratio:2/3;
+    object-fit:cover;
+    border-radius:2px;
+    position:relative;
+    z-index:1;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .portrait::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    transform:translate(14px,14px);
+    background:var(--moss);
+    border-radius:2px;
+    z-index:0;
+  }
+  .portrait .stamp{
+    position:absolute;
+    z-index:2;
+    top:12px;left:12px;
+    font-family:var(--font-mono);
+    font-size:10px;
+    letter-spacing:0.12em;
+    color:var(--paper);
+    background:rgba(28,27,23,0.55);
+    padding:3px 8px;
+    border-radius:100px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- 统计册口 ---------- */
+  .tally{
+    display:flex;
+    align-items:flex-end;
+    gap:40px;
+    margin-top:46px;
+    flex-wrap:wrap;
+  }
+  .tally .count{
+    font-family:var(--font-display);
+    font-size:clamp(64px,12vw,128px);
+    font-weight:600;
+    line-height:0.8;
+    color:var(--ink);
+  }
+  .tally .count sup{
+    font-size:0.28em;
+    font-family:var(--font-mono);
+    color:var(--brass);
+    vertical-align:super;
+    top:-0.2em;
+  }
+  .tally .legend{
+    padding-bottom:10px;
+  }
+  .tally .legend dt{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+  .tally .legend dd{
+    font-family:var(--font-display);
+    font-size:20px;
+  }
+  .tally .legend dd .of{font-size:14px;color:var(--ink-soft);font-family:var(--font-mono);}
+  .tally .legend dd + dt{margin-top:16px;}
+
+  /* ---------- 分册标题 ---------- */
+  .ledger{padding:8px 0 0;}
+  .term{
+    padding:54px 0 6px;
+  }
+  .term-head{
+    display:flex;
+    align-items:baseline;
+    gap:18px;
+    margin-bottom:6px;
+  }
+  .term-head .yr{
+    font-family:var(--font-mono);
+    font-size:13px;
+    letter-spacing:0.1em;
+    color:var(--brass);
+  }
+  .term-head h2{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:30px;
+  }
+
+  /* ---------- 奖项条目 ---------- */
+  .entry{
+    display:grid;
+    grid-template-columns:84px 1fr auto;
+    gap:24px;
+    align-items:baseline;
+    padding:24px 6px 24px 0;
+    border-top:1px solid var(--line);
+    position:relative;
+    transition:padding-left .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .entry::before{
+    content:"";
+    position:absolute;
+    left:-2px;top:24px;bottom:24px;
+    width:2px;
+    background:var(--brass);
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .entry:hover,.entry:focus-within{padding-left:18px;}
+  .entry:hover::before,.entry:focus-within::before{transform:scaleY(1);}
+
+  .entry .ix{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--ink-soft);
+    letter-spacing:0.04em;
+  }
+  .entry .body h3{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:21px;
+    line-height:1.25;
+    margin-bottom:5px;
+  }
+  .entry .body .meta{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+  .entry .body .note{
+    font-size:14px;
+    color:var(--ink-soft);
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transition:max-height .4s ease,opacity .4s ease,margin-top .4s ease;
+  }
+  .entry:hover .note,.entry:focus-within .note{
+    max-height:80px;opacity:1;margin-top:8px;
+  }
+
+  .rank{
+    justify-self:end;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .rank .grade{
+    font-family:var(--font-display);
+    font-size:17px;
+  }
+  .level{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    padding:3px 9px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    margin-top:7px;
+  }
+  .level.national{
+    border-color:var(--brass);
+    color:var(--brass);
+    background:rgba(176,130,47,0.06);
+  }
+  .level.provincial{
+    border-color:var(--moss);
+    color:var(--moss);
+  }
+
+  /* ---------- 在研项目 ---------- */
+  .project{
+    margin-top:52px;
+    padding-top:46px;
+    border-top:1px solid var(--line);
+  }
+  .project .eyebrow{margin-bottom:18px;}
+  .project-card{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:28px;
+    padding:30px 30px 30px 34px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:4px;
+  }
+  .project-card::before{
+    content:"";
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:4px;
+    background:var(--moss);
+  }
+  .project-card h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:clamp(28px,5vw,40px);
+    letter-spacing:-0.01em;
+    margin-bottom:10px;
+  }
+  .project-card .desc{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    max-width:460px;
+    margin-bottom:16px;
+  }
+  .project-card .ptags{display:flex;gap:8px;flex-wrap:wrap;}
+  .project-card .ptag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.06em;
+    padding:3px 10px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    background:var(--paper);
+  }
+  .project-card .repo{
+    font-family:var(--font-body);
+    font-size:15px;
+    color:var(--moss);
+    text-decoration:none;
+    white-space:nowrap;
+    border-bottom:1px solid var(--brass);
+    padding-bottom:2px;
+    transition:color .2s,border-color .2s;
+  }
+  .project-card .repo:hover{color:var(--brass);border-color:var(--moss);}
+
+  /* ---------- 页脚 ---------- */
+  footer{
+    background:var(--moss-deep);
+    color:var(--paper);
+    margin-top:80px;
+    padding:64px 0 56px;
+  }
+  footer .eyebrow{color:var(--brass-soft);}
+  footer h2{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:clamp(30px,5vw,44px);
+    margin-bottom:26px;
+    line-height:1.1;
+  }
+  footer .links{
+    display:flex;
+    gap:14px 30px;
+    flex-wrap:wrap;
+  }
+  footer a{
+    color:var(--paper);
+    text-decoration:none;
+    font-size:16px;
+    border-bottom:1px solid rgba(244,239,230,0.35);
+    padding-bottom:2px;
+    transition:border-color .2s,color .2s;
+  }
+  footer a:hover{color:var(--brass-soft);border-color:var(--brass-soft);}
+  footer .sign{
+    margin-top:46px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:rgba(244,239,230,0.5);
+    text-transform:uppercase;
+  }
+
+  /* ---------- 进场动画 ---------- */
+  .reveal{opacity:0;transform:translateY(16px);}
+  .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);}
+
+  a:focus-visible,.entry:focus-within{outline:2px solid var(--moss);outline-offset:3px;}
+
+  @media (max-width:680px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .portrait{justify-self:start;order:-1;}
+    .portrait img{width:150px;}
+    .portrait::after{transform:translate(10px,10px);}
+  }
+
+  @media (max-width:640px){
+    .entry{grid-template-columns:1fr;gap:6px;}
+    .entry .ix{order:-1;}
+    .rank{justify-self:start;text-align:left;margin-top:6px;}
+    .tally{gap:26px;}
+    .project-card{flex-direction:column;align-items:flex-start;gap:20px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <span>个人简介 / Profile</span>
+      <span>2024 <span class="dot">—</span> 至今</span>
+    </div>
+
+    <!-- ===== 封面 ===== -->
+    <header class="hero">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow reveal">中南财经政法大学 · 数据科学与大数据技术</p>
+          <h1 class="reveal">石<span class="accent">子彧</span></h1>
+          <p class="role reveal">本科在读 · 2024 级</p>
+          <p class="intro reveal">数据科学与大数据技术专业本科生,目前在生物信息学领域持续学习与探索。下面是我在校期间的学业与荣誉记录,持续更新中。</p>
+        </div>
+        <!-- 照片:文件名 portrait.jpg,需与 index.html 放在同一目录 -->
+        <figure class="portrait reveal">
+          <span class="stamp">石子彧</span>
+          <img src="portrait.jpg" alt="石子彧 证件照" />
+        </figure>
+      </div>
+
+      <!-- 核心数据:绩点 / 综测 排名 -->
+      <div class="tally reveal">
+        <div class="count" data-count="5">0<sup>项荣誉</sup></div>
+        <dl class="legend">
+          <dt>大一绩点排名</dt>
+          <dd>6 <span class="of">/ 188</span></dd>
+          <dt>大一综测排名</dt>
+          <dd>11 <span class="of">/ 188</span></dd>
+        </dl>
+      </div>
+    </header>
+  </div>
+
+  <!-- ===== 奖项正文 ===== -->
+  <main class="wrap ledger">
+
+    <!-- 大一分册 -->
+    <section class="term">
+      <div class="term-head reveal">
+        <span class="yr">2024 — 2025</span>
+        <h2>大一</h2>
+      </div>
+
+      <article class="entry reveal" tabindex="0">
+        <div class="ix">No.01</div>
+        <div class="body">
+          <h3>“华数杯”全国大学生数学建模竞赛</h3>
+          <div class="meta">入学后的第一项竞赛荣誉</div>
+          <p class="note">从这里开始,迈出建模与数据分析的第一步。</p>
+        </div>
+        <div class="rank">
+          <div class="grade">三等奖</div>
+          <span class="level national">国家级</span>
+        </div>
+      </article>
+
+      <article class="entry reveal" tabindex="0">
+        <div class="ix">No.02</div>
+        <div class="body">
+          <h3>校一等奖学金</h3>
+          <div class="meta">2024–2025 学年 · 综合测评专业第 11</div>
+          <p class="note">学业绩点专业排名第 6 / 188。</p>
+        </div>
+        <div class="rank">
+          <div class="grade">一等</div>
+          <span class="level">校级</span>
+        </div>
+      </article>
+
+      <article class="entry reveal" tabindex="0">
+        <div class="ix">No.03</div>
+        <div class="body">
+          <h3>大一优秀学生</h3>
+          <div class="meta">2024–2025 学年 · 校级荣誉称号</div>
+          <p class="note">学业与综合素质双优。</p>
+        </div>
+        <div class="rank">
+          <div class="grade">荣誉称号</div>
+          <span class="level">校级</span>
+        </div>
+      </article>
+    </section>
+
+    <!-- 大二分册 -->
+    <section class="term">
+      <div class="term-head reveal">
+        <span class="yr">2025 — 2026</span>
+        <h2>大二</h2>
+      </div>
+
+      <article class="entry reveal" tabindex="0">
+        <div class="ix">No.04</div>
+        <div class="body">
+          <h3>“博文杯”大学生百项实证创新基金项目</h3>
+          <div class="meta">金融学院立项 · 项目组成员</div>
+          <p class="note">参与项目研究,负责实证模型的搭建,项目顺利结项。</p>
+        </div>
+        <div class="rank">
+          <div class="grade">成功结项</div>
+          <!-- 等级:确认是校级还是院级后,改下面的文字即可 -->
+          <span class="level">校级</span>
+        </div>
+      </article>
+
+      <article class="entry reveal" tabindex="0">
+        <div class="ix">No.05</div>
+        <div class="body">
+          <h3>全国大学生数学竞赛</h3>
+          <div class="meta">中国数学会主办</div>
+          <p class="note">非数学专业组。</p>
+        </div>
+        <div class="rank">
+          <div class="grade">三等奖</div>
+          <span class="level provincial">省级 / 赛区</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===== 在研项目 ===== -->
+  <section class="wrap">
+    <div class="project reveal">
+      <p class="eyebrow">在研项目 / In progress</p>
+      <div class="project-card">
+        <div class="project-main">
+          <h3>MutCleaner</h3>
+          <!-- 把下面这句换成 MutCleaner 的一句话简介 -->
+          <p class="desc">生物信息学方向的开源工具,目前正持续开发与迭代中。</p>
+          <div class="ptags">
+            <span class="ptag">生物信息学</span>
+            <span class="ptag">开源开发</span>
+          </div>
+        </div>
+        <a class="repo" href="https://github.com/xulab-research/MutCleaner" target="_blank" rel="noopener">查看 GitHub 仓库 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 页脚 / 联系方式:把链接换成你自己的 ===== -->
+  <footer>
+    <div class="wrap">
+      <p class="eyebrow reveal">联系我</p>
+      <h2 class="reveal">想了解更多,<br />欢迎随时联系。</h2>
+      <div class="links reveal">
+        <a href="mailto:202421090428@stu.zuel.edu.cn">202421090428@stu.zuel.edu.cn</a>
+        <a href="https://github.com/yukiko-shi" target="_blank" rel="noopener">GitHub · @yukiko-shi</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach((el,i)=>{
+      el.style.transitionDelay = Math.min(i*40,240)+'ms';
+      io.observe(el);
+    });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const countEl = document.querySelector('.count');
+    const target = parseInt(countEl.dataset.count,10);
+    if(reduce){
+      countEl.innerHTML = String(target).padStart(2,'0')+'<sup>项荣誉</sup>';
+    }else{
+      let n=0;
+      const step=()=>{ n++; countEl.innerHTML=String(n).padStart(2,'0')+'<sup>项荣誉</sup>'; if(n<target) setTimeout(step, 110); };
+      setTimeout(step,400);
+    }
+  </script>
+</body>
+</html>
